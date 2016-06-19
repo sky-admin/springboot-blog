@@ -19,9 +19,6 @@ public class Article {
     private char status;
     private int view;
 
-    @OneToMany
-    private int categoryid;
-
     public Article() {
     }
 
@@ -30,15 +27,6 @@ public class Article {
         this.status = 'n';
         this.title = title;
         this.content = content;
-        this.categoryid = 0;
-    }
-
-    public Article(String title, String content, int categoryid) {
-        this.view = 0;
-        this.title = title;
-        this.content = content;
-        this.status = 'n';
-        this.categoryid = categoryid;
     }
 
     public int getId() {
@@ -79,13 +67,5 @@ public class Article {
 
     public void setView(int view) {
         this.view = view;
-    }
-
-    public int getCategoryid() {
-        return categoryid;
-    }
-
-    public void setCategoryid(int categoryid) {
-        this.categoryid = categoryid;
     }
 }

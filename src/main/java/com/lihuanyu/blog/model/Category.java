@@ -10,7 +10,6 @@ import javax.persistence.*;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToMany(mappedBy = "categoryid")
     private int id;
 
     private String categoryname;
