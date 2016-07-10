@@ -26,3 +26,6 @@ buildNumber.properties
 .idea
 *.iml
 src/main/resources/application.yml
+
+deploy.sh
+deploy.py
