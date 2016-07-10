@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * Created by skyADMIN on 16/6/19.
  */
 @RestController
-@CrossOrigin(origins = "*")
 public class ArticleController {
 
     @Autowired
