@@ -1,6 +1,9 @@
 package com.lihuanyu.blog.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * Created by skyADMIN on 16/6/19.
@@ -16,17 +19,22 @@ public class Article {
     private String title;
     private String content;
 
+    private LocalDate publishday;
+    private LocalDateTime lastchange;
+    private String author;
+
     private char status;
-    private int view;
 
     public Article() {
     }
 
-    public Article(String title, String content) {
-        this.view = 0;
+    public Article(String title, String content, String author) {
         this.status = 'n';
         this.title = title;
         this.content = content;
+        this.author = author;
+        this.publishday = LocalDate.now();
+        this.lastchange = LocalDateTime.now();
     }
 
     public int getId() {
@@ -61,11 +69,27 @@ public class Article {
         this.status = status;
     }
 
-    public int getView() {
-        return view;
+    public LocalDate getPublishday() {
+        return publishday;
     }
 
-    public void setView(int view) {
-        this.view = view;
+    public void setPublishday(LocalDate publishday) {
+        this.publishday = publishday;
+    }
+
+    public LocalDateTime getLastchange() {
+        return lastchange;
+    }
+
+    public void setLastchange(LocalDateTime lastchange) {
+        this.lastchange = lastchange;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
