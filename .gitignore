@@ -25,7 +25,7 @@ buildNumber.properties
 
 .idea
 *.iml
-src/main/resources/application.yml
+src/main/resources/application-production.yml
 
 deploy.sh
 deploy.py
