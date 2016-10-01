@@ -58,9 +58,18 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/edit",method = RequestMethod.POST)
-    public void editArticle(int id, String title, String content) {
-
+    public Object editArticle(int id, String title, String content) {
+        if (loginService.isLogin() == 0) {
+            return "no-login";
+        }
+        User currentUser = (User) httpSession.getAttribute("user");
         Article article = articleDao.findOne(id);
+        if (currentUser.getId() != article.getAuthor().getId()){
+            return "no-access";
+        }
         article.setTitle(title);
+        article.setContent(content);
+        articleDao.save(article);
+        return "success";
     }
 }
