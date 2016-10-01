@@ -3,7 +3,6 @@ package com.lihuanyu.blog.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 /**
  * Created by skyADMIN on 16/6/19.
@@ -21,14 +20,16 @@ public class Article {
 
     private LocalDate publishday;
     private LocalDateTime lastchange;
-    private String author;
+
+    @ManyToOne
+    private User author;
 
     private char status;
 
     public Article() {
     }
 
-    public Article(String title, String content, String author) {
+    public Article(String title, String content, User author) {
         this.status = 'n';
         this.title = title;
         this.content = content;
@@ -85,11 +86,11 @@ public class Article {
         this.lastchange = lastchange;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 }

@@ -1,22 +1,27 @@
 package com.lihuanyu.blog.controller;
 
-import com.lihuanyu.blog.model.Article;
 import com.lihuanyu.blog.dao.ArticleDao;
+import com.lihuanyu.blog.model.Article;
+import com.lihuanyu.blog.model.User;
 import com.lihuanyu.blog.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by skyADMIN on 16/6/19.
  */
 @RestController
 public class ArticleController {
+
+    @Autowired
+    private HttpSession httpSession;
 
     @Autowired
     private ArticleDao articleDao;
@@ -36,8 +41,9 @@ public class ArticleController {
         if (loginService.isLogin() == 0) {
             return "no-login";
         }
+        User currentUser = (User) httpSession.getAttribute("user");
         try {
-            Article article = new Article(title, content, "default");
+            Article article = new Article(title, content, currentUser);
             articleDao.save(article);
             return "success";
         } catch (Exception ex) {
@@ -49,5 +55,12 @@ public class ArticleController {
     @RequestMapping("/article")
     public Article showArticle(int id) {
         return articleDao.findOne(id);
+    }
+
+    @RequestMapping(value = "/edit",method = RequestMethod.POST)
+    public void editArticle(int id, String title, String content) {
+
+        Article article = articleDao.findOne(id);
+        article.setTitle(title);
     }
 }

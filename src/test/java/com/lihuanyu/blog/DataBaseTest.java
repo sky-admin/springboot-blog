@@ -29,7 +29,7 @@ public class DataBaseTest {
     public void addMsgToDb(){
         for (int i = 0; i < 10; i++){
             Article article = new Article();
-            article.setAuthor("skyadmin");
+//            article.setAuthor("skyadmin");
             article.setContent(i+"这是一段测试文字");
             article.setTitle(i+"标题");
             article.setPublishday(LocalDate.now());
