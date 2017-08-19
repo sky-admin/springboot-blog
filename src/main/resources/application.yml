@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://121.251.255.96:3306/yibantest_skyadmin
-    username: yibantest
-    password: yibantest
+    url: jdbc:mysql://db:3306/demo
+    username: root
+    password: demo
     test-while-idle: true
     validation-query: SELECT 1
   jpa:

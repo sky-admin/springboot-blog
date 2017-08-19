@@ -1,0 +1,16 @@
+web:
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - db
+    volumes:
+      - .:/data
+      - ~/.m2:/root/.m2
+    command: mvn spring-boot:run
+
+db:
+  image: mysql:5.7
+  environment:
+    MYSQL_DATABASE: demo
+    MYSQL_ROOT_PASSWORD: demo
