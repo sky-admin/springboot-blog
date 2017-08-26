@@ -12,6 +12,14 @@ docker提供开发环境及测试数据库，安装完成docker后本项目可�
 
 `docker-compose up`
 
+上述命令会启动两个service，并执行预置的命令：mvn spring-boot:run
+
+如果是想进行开发，需要频繁的结束重启，可输入命令：
+
+`docker-compose run web bash`
+
+会进入web容器的bash，mysql容器因为是关联容器，也会自己启动。
+
 ## 功能
 
 注册登录，登录用户可发表文字，未登录用户可浏览文章。
