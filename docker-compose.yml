@@ -1,5 +1,5 @@
 web:
-    image: skyadmin:springweb
+    image: skyadmin/springweb
     ports:
       - "8080:8080"
     links:
