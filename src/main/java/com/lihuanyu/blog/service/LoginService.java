@@ -65,4 +65,9 @@ public class LoginService {
             return 0;
         }
     }
+
+    public ErrorReporter logout() {
+        httpSession.removeAttribute("user");
+        return new ErrorReporter(0, "success");
+    }
 }

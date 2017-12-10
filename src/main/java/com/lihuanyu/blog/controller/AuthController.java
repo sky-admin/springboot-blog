@@ -16,14 +16,18 @@ public class AuthController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ErrorReporter doLogin(String username, String password){
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ErrorReporter doLogin(String username, String password) {
         return loginService.login(username, password);
     }
 
-    @RequestMapping(value = "/reg",method = RequestMethod.POST)
-    public ErrorReporter doReg(String username, String password, String nickname, String email){
+    @RequestMapping(value = "/reg", method = RequestMethod.POST)
+    public ErrorReporter doReg(String username, String password, String nickname, String email) {
         return loginService.reg(username, password, email, nickname);
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ErrorReporter doLogout() {
+        return loginService.logout();
+    }
 }
