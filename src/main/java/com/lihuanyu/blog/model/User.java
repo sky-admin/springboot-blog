@@ -1,5 +1,7 @@
 package com.lihuanyu.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,12 +18,15 @@ public class User {
     private int id;
 
     private String username;
+    @JsonIgnore
     private String password;
     private String email;
 
     private String nickname;
 
+    @JsonIgnore
     private LocalDate regday;
+    @JsonIgnore
     private LocalTime regtime;
 
     public User() {
